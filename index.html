@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giovanni Borrelli | Data Engineer & Data Scientist</title>
-  <meta name="description" content="Giovanni Borrelli — Data Engineer & Data Scientist. Portfolio, projects, skills, and education." />
+  <meta name="description" content="Giovanni Borrelli — Data Scientist & Data Engineer. Portfolio, projects, skills, and education." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -23,8 +23,10 @@
       --muted: rgba(255,255,255,.72);
 
       --g1: linear-gradient(90deg,#00c6ff,#0072ff);
-      --g2: linear-gradient(90deg,#ff00cc,#333399);
+      --g2: linear-gradient(90deg,#ff00cc,#2da6d3);
       --g3: linear-gradient(90deg,#7cf7ff,#b388ff,#ff7ad9);
+
+      --button: linear-gradient(90deg, #254c52, #4a2984, #661a50);
       --shadow: 0 14px 40px rgba(0,0,0,.35);
     }
 
@@ -196,7 +198,7 @@
       padding: 10px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
+      background: rgb(145 49 199 / 16%);
       color: var(--text);
       text-decoration:none;
       transition:.2s ease;
@@ -209,7 +211,7 @@
     }
     .btn.primary{
       border: none;
-      background: var(--g3);
+      background: var(--button);
       color:#0b0b14;
     }
     .btn.primary:hover{ filter: brightness(1.05); }
@@ -338,7 +340,7 @@
     <div class="nav-inner">
       <div class="brand">
         <strong>Giovanni Borrelli</strong>
-        <span>Data Engineer • Data Scientist</span>
+        <span>Data Scientist • Data Engineer</span>
       </div>
       <div class="nav-links">
         <a href="#about">About</a>
@@ -357,10 +359,10 @@
       <div class="hero-card">
         <div class="kicker">
           <span class="pill">📍 Trecase (NA), Italy</span>
-          <span class="pill">🎓 MSc DS & ML — 110/110 cum laude</span>
+          <span class="pill">🎓 MSc Data Science & Machine Learning</span>
         </div>
 
-        <h1><span class="grad">Giovanni Borrelli</span><br/>Data Engineer & Data Scientist</h1>
+        <h1><span class="grad">Giovanni Borrelli</span><br/>Data Scientist & Data Engineer</h1>
         <p class="subtitle">
           I hold a Master’s degree in Data Science & Machine Learning and I’m eager to apply
           my skills in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Power BI</strong> to support
@@ -396,6 +398,53 @@
         </div>
       </div>
     </section>
+
+  <!-- EXPERIENCE / JOBS -->
+  <section class="section" id="experience">
+    <div class="section-title">
+      <h2>Professional Experience</h2>
+      <span>Data Engineering & Machine Learning</span>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Data Scientist / End-to-End ML & Data Engineering</h3>
+        <div class="meta">Telematic Universities Sector • Italy • Current</div>
+
+        <p>
+          Working in the telematic university sector, developing data-driven solutions
+          for process optimization and internal workflow automation.
+          I manage the full data lifecycle, from data collection to production deployment.
+        </p>
+
+        <ul class="bullets">
+          <li>Collection, cleaning and validation of complex datasets</li>
+          <li>Design and optimization of advanced SQL queries</li>
+          <li>Development and deployment of Machine Learning / Deep Learning models in Python</li>
+          <li>End-to-end data pipeline construction</li>
+          <li>Integration of AWS services (S3, Bedrock)</li>
+          <li>Workflow automation and API management (Postman)</li>
+        </ul>
+
+        <h4 style="margin-top:16px; font-size:1rem;">Key Achievements</h4>
+        <ul class="bullets">
+          <li>Optimized critical SQL queries, improving performance by up to <strong>23x</strong></li>
+          <li>Automated two manual processes using ML models, reducing operational time and human intervention</li>
+          <li>Built production-ready data pipelines supporting internal decision-making systems</li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">SQL Optimization</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">AWS (S3, Bedrock)</span>
+          <span class="tag">Data Pipelines</span>
+          <span class="tag">API Automation</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
     <!-- SKILLS -->
     <section class="section" id="skills">
@@ -465,7 +514,7 @@
 
         <div class="card two">
           <h3>Bachelor’s Degree — Computer Science</h3>
-          <div class="meta">University of Salerno (SA) • Oct 2020 – Oct 2023 • 93/110</div>
+          <div class="meta">University of Salerno (SA) • Oct 2020 – Oct 2023</div>
           <p>
             Solid foundations in computer science, programming, and data-driven problem solving.
           </p>
@@ -473,7 +522,7 @@
 
         <div class="card">
           <h3>Scientific High School Diploma</h3>
-          <div class="meta">Liceo Scientifico Pitagora (NA) • Sept 2015 – Jun 2020 • 97/110</div>
+          <div class="meta">Liceo Scientifico Pitagora (NA) • Sept 2015 – Jun 2020</div>
         </div>
       </div>
     </section>
@@ -604,10 +653,7 @@
     </section>
 
     <div class="footer">
-      © 2026 Giovanni Borrelli • Built with GitHub Pages<br/>
-      <span style="display:inline-block;margin-top:8px;color:rgba(255,255,255,.55);">
-        I authorize the processing of my personal data contained in this CV in accordance with GDPR 2016/679 and Italian Legislative Decree 196/2003.
-      </span>
+      © Giovanni Borrelli • Built with GitHub Pages
     </div>
 
   </main>
