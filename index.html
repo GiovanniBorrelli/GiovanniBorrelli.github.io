@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giovanni Borrelli | Data Engineer & Data Scientist</title>
+  <meta name="description" content="Giovanni Borrelli — Data Engineer & Data Scientist. Portfolio, projects, skills, and education." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f0c29;
+      --bg2:#302b63;
+      --bg3:#24243e;
+
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.10);
+      --border: rgba(255,255,255,.14);
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+
+      --g1: linear-gradient(90deg,#00c6ff,#0072ff);
+      --g2: linear-gradient(90deg,#ff00cc,#333399);
+      --g3: linear-gradient(90deg,#7cf7ff,#b388ff,#ff7ad9);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family:'Poppins', sans-serif;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* subtle animated blobs */
+    .blob{
+      position:fixed;
+      inset:auto;
+      width:520px;
+      height:520px;
+      filter: blur(55px);
+      opacity:.30;
+      z-index:-1;
+      border-radius:50%;
+      animation: float 10s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .blob.b1{ top:-140px; left:-160px; background: radial-gradient(circle at 30% 30%, #00c6ff, transparent 60%); }
+    .blob.b2{ bottom:-180px; right:-180px; background: radial-gradient(circle at 30% 30%, #ff00cc, transparent 60%); animation-duration: 12s; }
+    .blob.b3{ top:30%; right:-220px; background: radial-gradient(circle at 30% 30%, #b388ff, transparent 60%); animation-duration: 14s; opacity:.22; }
+
+    @keyframes float{
+      0%,100%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(18px,-14px) scale(1.03); }
+    }
+
+    .container{
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    /* top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(10,10,20,.35);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      z-index:10;
+    }
+    .nav-inner{
+      width:min(1100px, 92%);
+      margin:0 auto;
+      padding: 12px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand strong{
+      font-weight:700;
+      letter-spacing:.3px;
+      background: var(--g3);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      font-size: 1.05rem;
+    }
+    .brand span{
+      font-size:.82rem;
+      color:var(--muted);
+    }
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.92rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: .2s ease;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+    }
+    .nav-links{ display:flex; flex-wrap:wrap; justify-content:flex-end; gap:4px; }
+
+    /* hero */
+    .hero{
+      padding: 56px 0 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(135deg, rgba(124,247,255,.18), rgba(179,136,255,.14), rgba(255,122,217,.12));
+      opacity:.8;
+      pointer-events:none;
+      filter: blur(24px);
+    }
+    .hero-card > *{ position:relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:.95rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size:.85rem;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    h1{
+      font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+      line-height:1.12;
+      margin-bottom: 10px;
+    }
+    .grad{
+      background: var(--g1);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      max-width: 60ch;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      text-decoration:none;
+      transition:.2s ease;
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.12);
+    }
+    .btn.primary{
+      border: none;
+      background: var(--g3);
+      color:#0b0b14;
+    }
+    .btn.primary:hover{ filter: brightness(1.05); }
+
+    .side{
+      display:grid;
+      gap: 14px;
+      align-content:start;
+    }
+    .mini{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .mini h3{
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      background: var(--g2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .mini p, .mini li{
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .list{
+      margin-top: 8px;
+      padding-left: 18px;
+    }
+
+    /* sections */
+    .section{
+      margin-top: 26px;
+      padding-top: 18px;
+    }
+    .section-title{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 12px;
+    }
+    .section-title h2{
+      font-size: 1.65rem;
+      background: var(--g2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      letter-spacing:.2px;
+    }
+    .section-title span{
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .two{ grid-column: span 6; }
+    .three{ grid-column: span 4; }
+
+    .card h3{
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+    .meta{
+      color: var(--muted);
+      font-size: .92rem;
+      margin-bottom: 10px;
+    }
+    .card p{ color: var(--muted); }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 12px;
+    }
+    .tag{
+      font-size:.85rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+    }
+
+    .bullets{ margin-top: 10px; padding-left: 18px; }
+    .bullets li{ margin: 6px 0; color: var(--muted); }
+
+    .footer{
+      margin-top: 34px;
+      padding: 18px 0 0;
+      text-align:center;
+      color: rgba(255,255,255,.55);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .two{ grid-column: span 12; }
+      .three{ grid-column: span 12; }
+      .nav-links{ display:none; } /* keep it simple on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>Giovanni Borrelli</strong>
+        <span>Data Engineer • Data Scientist</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#languages">Languages</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <div class="kicker">
+          <span class="pill">📍 Trecase (NA), Italy</span>
+          <span class="pill">🎓 MSc DS & ML — 110/110 cum laude</span>
+        </div>
+
+        <h1><span class="grad">Giovanni Borrelli</span><br/>Data Engineer & Data Scientist</h1>
+        <p class="subtitle">
+          I hold a Master’s degree in Data Science & Machine Learning and I’m eager to apply
+          my skills in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Power BI</strong> to support
+          data-driven analysis and decision-making. I’m especially interested in
+          <strong>NLP</strong>, <strong>LLMs</strong>, and applied machine learning.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="https://www.linkedin.com/in/giovanniborrelli01/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="#education">Education</a>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="mini" id="about">
+          <h3>Profile</h3>
+          <p>
+            Data professional with strong foundations in machine learning, data analysis, and NLP.
+            Comfortable working end-to-end: data cleaning, modeling, evaluation, and visualization.
+          </p>
+        </div>
+
+        <div class="mini">
+          <h3>Soft Skills</h3>
+          <ul class="list">
+            <li>Meeting deadlines</li>
+            <li>Communication</li>
+            <li>Problem solving</li>
+            <li>Flexibility</li>
+            <li>Autonomy</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+        <span>Tools & technologies</span>
+      </div>
+
+      <div class="grid">
+        <div class="card three">
+          <h3>Programming</h3>
+          <ul class="bullets">
+            <li>Python (pandas, numpy, scipy)</li>
+            <li>R</li>
+            <li>SQL</li>
+            <li>Git version control</li>
+          </ul>
+        </div>
+
+        <div class="card three">
+          <h3>ML / Deep Learning</h3>
+          <ul class="bullets">
+            <li>scikit-learn</li>
+            <li>TensorFlow</li>
+            <li>PyTorch</li>
+            <li>Predictive modeling & evaluation</li>
+          </ul>
+        </div>
+
+        <div class="card three">
+          <h3>Data Visualization</h3>
+          <ul class="bullets">
+            <li>Power BI</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+            <li>ggplot2</li>
+          </ul>
+        </div>
+
+        <div class="card three">
+          <h3>Data / Cloud</h3>
+          <ul class="bullets">
+            <li>Data cleaning & analysis</li>
+            <li>MySQL</li>
+            <li>MongoDB</li>
+            <li>AWS fundamentals & cloud principles</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+        <span>Academic background</span>
+      </div>
+
+      <div class="grid">
+        <div class="card two">
+          <h3>Master’s Degree — Data Science & Machine Learning</h3>
+          <div class="meta">University of Salerno (SA) • Oct 2023 – Oct 2025 • 110/110 cum laude</div>
+          <p>
+            Focus on machine learning, deep learning, NLP, and data engineering.
+          </p>
+        </div>
+
+        <div class="card two">
+          <h3>Bachelor’s Degree — Computer Science</h3>
+          <div class="meta">University of Salerno (SA) • Oct 2020 – Oct 2023 • 93/110</div>
+          <p>
+            Solid foundations in computer science, programming, and data-driven problem solving.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Scientific High School Diploma</h3>
+          <div class="meta">Liceo Scientifico Pitagora (NA) • Sept 2015 – Jun 2020 • 97/110</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <span>Selected academic projects</span>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Automated User Story Generation with Large Language Models (2026)</h3>
+          <div class="meta">Master’s Thesis Project • NLP • Prompt Engineering • LLM Evaluation</div>
+          <p>
+            Proposed an LLM-based approach to automatically generate user stories from software requirements,
+            addressing limitations of traditional ML/NLP methods in capturing “who”, “what”, and “why”.
+          </p>
+          <ul class="bullets">
+            <li>Compared <strong>LLaMA</strong> and <strong>Mistral</strong> for requirement-to-user-story generation.</li>
+            <li>Tested prompt engineering strategies: <strong>few-shot</strong>, <strong>meta-prompting</strong>, and <strong>directional stimulus</strong>.</li>
+            <li>Evaluated quality with <strong>BLEU</strong>, <strong>ROUGE</strong>, <strong>METEOR</strong>, <strong>BERTScore</strong> + qualitative error analysis.</li>
+            <li>Findings: LLMs produce coherent and semantically correct user stories; few-shot improves results; LLaMA slightly stronger on complex/sequential cases.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">LLMs</span><span class="tag">NLP</span><span class="tag">Prompt Engineering</span><span class="tag">Evaluation</span>
+          </div>
+        </div>
+
+        <div class="card two">
+          <h3>Software Requirements Classification through NLP (2023)</h3>
+          <div class="meta">Thesis / Project • BERT • TensorFlow • PyTorch</div>
+          <p>Automated the identification of linguistic cues indicating software requirements to support software engineers.</p>
+          <ul class="bullets">
+            <li>Trained a BERT-based model using TensorFlow and PyTorch.</li>
+            <li>Focused on detecting patterns tied to requirement statements.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">BERT</span><span class="tag">TensorFlow</span><span class="tag">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="card two">
+          <h3>Diabetes Classifier (2023)</h3>
+          <div class="meta">Classification • Data Cleaning • Python • Google Colab</div>
+          <p>Built a model to predict the presence of diabetes from patient data.</p>
+          <ul class="bullets">
+            <li>Performed data cleaning and preprocessing (data engineering).</li>
+            <li>Trained and evaluated the classifier in Python/Colab.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Data Cleaning</span><span class="tag">ML</span>
+          </div>
+        </div>
+
+        <div class="card two">
+          <h3>Federated Learning — Pothole Detection (2024)</h3>
+          <div class="meta">Computer Vision • YOLOv8 • Roboflow • Colab</div>
+          <p>Developed a federated learning pipeline to detect potholes in road images using object detection and segmentation.</p>
+          <ul class="bullets">
+            <li>Used YOLOv8 for detection + segmentation.</li>
+            <li>Applied data augmentation to improve robustness.</li>
+            <li>Leveraged Roboflow and Google Colab tooling.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Federated Learning</span><span class="tag">YOLOv8</span><span class="tag">CV</span>
+          </div>
+        </div>
+
+        <div class="card two">
+          <h3>Data Analysis — Labour Force (2023)</h3>
+          <div class="meta">Exploratory Analysis • R • Visualization</div>
+          <p>Analyzed a workforce dataset focusing on cross-country differences.</p>
+          <ul class="bullets">
+            <li>Created time series, scatterplots, histograms, and dendrograms in R.</li>
+            <li>Explored patterns and country-level comparisons.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">R</span><span class="tag">EDA</span><span class="tag">Visualization</span>
+          </div>
+        </div>
+
+        <div class="card two">
+          <h3>Reinforcement Learning — Autonomous Parking (2023)</h3>
+          <div class="meta">RL • Unity ML-Agents</div>
+          <p>Trained a reinforcement learning agent to autonomously park a vehicle in a simulated environment.</p>
+          <ul class="bullets">
+            <li>Built the environment and reward structure.</li>
+            <li>Trained the agent using Unity’s ML-Agents toolkit.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Reinforcement Learning</span><span class="tag">Unity ML-Agents</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Sentiment Analysis on Criminal Wiretaps (2024)</h3>
+          <div class="meta">NLP • SpaCy • VADER • Feel-It</div>
+          <p>Performed sentiment and emotional tone analysis on anonymized and censored criminal records to extract insights from text.</p>
+          <ul class="bullets">
+            <li>Built preprocessing and analysis pipeline.</li>
+            <li>Used SpaCy, VADER and Feel-It models for sentiment signals.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">NLP</span><span class="tag">SpaCy</span><span class="tag">VADER</span><span class="tag">Feel-It</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section class="section" id="languages">
+      <div class="section-title">
+        <h2>Languages</h2>
+        <span>Certificates</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>English — B2 (Cambridge Certificate)</h3>
+          <div class="meta">Torre Annunziata (NA) • May 2019</div>
+          <p>Cambridge Certificate B2 level.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Giovanni Borrelli • Built with GitHub Pages<br/>
+      <span style="display:inline-block;margin-top:8px;color:rgba(255,255,255,.55);">
+        I authorize the processing of my personal data contained in this CV in accordance with GDPR 2016/679 and Italian Legislative Decree 196/2003.
+      </span>
+    </div>
+
+  </main>
+</body>
+</html>
